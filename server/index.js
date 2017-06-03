@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config()
 const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
@@ -9,14 +10,15 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 const {User, Questions} = require('./models');
 
+console.log('LOOK HERE', process.env)
 let secret = {
   CLIENT_ID: process.env.CLIENT_ID,
   CLIENT_SECRET: process.env.CLIENT_SECRET
 }
 
-if(process.env.NODE_ENV != 'production') {
-  secret = require('./secret');
-}
+// if(process.env.NODE_ENV != 'production') {
+//   secret = require('./secret');
+// }
 
 const app = express();
 
