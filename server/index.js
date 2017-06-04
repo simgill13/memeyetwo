@@ -9,16 +9,18 @@ const DATABASE_URL = process.env.DATABASE_URL ||
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 const {User, Questions} = require('./models');
+secretfile = require('./secret');
 
 console.log('LOOK HERE', process.env)
+console.log('SECRET', secretfile)
 let secret = {
-  CLIENT_ID: process.env.CLIENT_ID,
-  CLIENT_SECRET: process.env.CLIENT_SECRET
+  CLIENT_ID: process.env.CLIENT_ID || secretfile.CLIENT_ID,
+  CLIENT_SECRET: process.env.CLIENT_SECRET || secretfile.CLIENT_SECRET
 }
 
-if(process.env.NODE_ENV != 'production') {
-  secret = require('./secret');
-}
+// if(process.env.NODE_ENV != 'production') {
+//   secret = require('./secret');
+// }
 
 const app = express();
 
