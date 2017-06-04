@@ -1,5 +1,5 @@
-const path = require('path');
 require('dotenv').config()
+const path = require('path');
 const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
@@ -12,10 +12,10 @@ const {User, Questions} = require('./models');
 secretfile = require('./secret');
 
 console.log('LOOK HERE', process.env)
-console.log('SECRET', secretfile)
+
 let secret = {
-  CLIENT_ID: process.env.CLIENT_ID || secretfile.CLIENT_ID,
-  CLIENT_SECRET: process.env.CLIENT_SECRET || secretfile.CLIENT_SECRET
+  CLIENT_ID: process.env.CLIENT_ID,
+  CLIENT_SECRET: process.env.CLIENT_SECRET
 }
 
 // if(process.env.NODE_ENV != 'production') {
