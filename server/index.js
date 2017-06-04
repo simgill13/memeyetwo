@@ -32,8 +32,8 @@ const database = {
 
 passport.use(
     new GoogleStrategy({
-        clientID:  process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
+        clientID:  secret.CLIENT_ID,
+        clientSecret: secret.CLIENT_SECRET,
         callbackURL: `/api/auth/google/callback`
     },
     (accessToken, refreshToken, profile, cb) => {
